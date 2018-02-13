@@ -1,9 +1,9 @@
-package com.whirlpool.model;
+package com.whirlpool.whirlpoolBackend.model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "project")
+@Table(name = "projects")
 @Access(AccessType.FIELD)
 public class Project extends ParentEntity {
 

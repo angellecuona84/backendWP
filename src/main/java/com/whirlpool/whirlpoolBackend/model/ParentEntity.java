@@ -1,4 +1,4 @@
-package com.whirlpool.model;
+package com.whirlpool.whirlpoolBackend.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
