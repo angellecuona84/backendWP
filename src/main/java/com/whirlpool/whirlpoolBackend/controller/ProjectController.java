@@ -2,7 +2,9 @@ package com.whirlpool.whirlpoolBackend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whirlpool.whirlpoolBackend.model.Project;
+import com.whirlpool.whirlpoolBackend.model.Step;
 import com.whirlpool.whirlpoolBackend.services.ProjectService;
+import com.whirlpool.whirlpoolBackend.services.StepService;
 import com.whirlpool.whirlpoolBackend.util.QueryResult;
 import com.whirlpool.whirlpoolBackend.util.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
+
+
 
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -47,6 +51,7 @@ public class ProjectController {
 
     @RequestMapping(value = "getProjects", method = RequestMethod.GET)
     public List<Project> getProjects(){
+        List<Project> a = projectService.findAll();
         return projectService.findAll();
     }
 
@@ -60,4 +65,6 @@ public class ProjectController {
         projectService.deleteProject(project);
         return new RestResponse(HttpStatus.OK.value(), "Success Operation");
     }
+
+
 }

@@ -1,6 +1,10 @@
 package com.whirlpool.whirlpoolBackend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -11,10 +15,27 @@ public class Project extends ParentEntity {
     private String name;
 
     @Column(name = "description")
+
+    @OneToMany(
+            mappedBy = "project",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonManagedReference
+    private List<Step> steps = new ArrayList<>();
+
     private String description;
 
     public String getName() {
         return name;
+    }
+
+    public List<Step> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<Step> steps) {
+        this.steps = steps;
     }
 
     public void setName(String name) {
