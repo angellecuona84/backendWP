@@ -14,8 +14,6 @@ public class Project extends ParentEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description")
-
     @OneToMany(
             mappedBy = "project",
             cascade = CascadeType.ALL,
@@ -24,6 +22,7 @@ public class Project extends ParentEntity {
     @JsonManagedReference
     private List<Step> steps = new ArrayList<>();
 
+    @Column(name = "description")
     private String description;
 
     public String getName() {
