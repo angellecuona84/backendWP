@@ -36,6 +36,11 @@ public class ProjectController {
         if (!validateProject(project)){
             return new RestResponse(HttpStatus.NOT_ACCEPTABLE.value(), "Project not validate");
         }
+        List<Step> steps = project.getSteps();
+        int pos=0;
+        for (Step step: steps) {
+            step.setOrderPosition(pos++);
+        }
         projectService.saveOrUpdate(project);
 
         return new RestResponse(HttpStatus.OK.value(), "Success Operation");
