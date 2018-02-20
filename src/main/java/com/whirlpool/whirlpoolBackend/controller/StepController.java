@@ -29,6 +29,16 @@ public class StepController{
         return stepService.findAllStepOrder();
     }
 
+    @RequestMapping(value = "getOrderStepByProject", method = RequestMethod.POST)
+    public List<Step>  getOrderStepForProject(@RequestBody String projectJson) throws IOException {
+
+        Project project = mapper.readValue(projectJson, Project.class);
+
+        List<Step> result = stepService.findAllStepOrderByProject(project);
+
+        return result;
+    }
+
     @RequestMapping(value = "saveOrUpdateStep", method = RequestMethod.POST)
     public RestResponse saveOrUpdate(@RequestBody String stepJson) throws IOException {
 

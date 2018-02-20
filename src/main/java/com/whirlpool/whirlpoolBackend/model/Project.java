@@ -17,7 +17,8 @@ public class Project extends ParentEntity {
     @OneToMany(
             mappedBy = "project",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch=FetchType.LAZY
     )
     @JsonManagedReference
     private List<Step> steps = new ArrayList<>();

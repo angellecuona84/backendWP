@@ -57,7 +57,9 @@ public class ProjectController {
 
     @RequestMapping(value = "deleteProject", method = RequestMethod.POST)
     public RestResponse deleteProject(@RequestBody String projectJson) throws IOException {
+
         Project project = mapper.readValue(projectJson, Project.class);
+
         if (project.getId() == null){
             return new RestResponse(HttpStatus.BAD_REQUEST.value(), "Error Occurred");
         }
